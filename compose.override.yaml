@@ -1,0 +1,16 @@
+# Compose override for this fork: use `docker compose up -d --build` to build
+# and redeploy from local source (Dockerfile.local) instead of pulling the
+# official GHCR image referenced by compose.yaml, which stays untouched.
+services:
+  edgeever:
+    image: edgeever:local
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+      args:
+        EDGE_EVER_BUILD_ID: ${EDGE_EVER_BUILD_ID:-}
+        EDGE_EVER_BUILD_CREATED_AT: ${EDGE_EVER_BUILD_CREATED_AT:-}
+        EDGE_EVER_BUILD_TRIGGER: ${EDGE_EVER_BUILD_TRIGGER:-manual}
+        EDGE_EVER_BUILD_METHOD: ${EDGE_EVER_BUILD_METHOD:-local_cli}
+    environment:
+      EDGE_EVER_CONTAINER_IMAGE: edgeever:local
