@@ -105,7 +105,9 @@
     "demo:sync": "bun scripts/sync-demo.mjs",
     "deploy:builds:setup": "bun scripts/cloudflare-workers-builds.mjs setup",
     "deploy:site": "bun run build:site && wrangler pages deploy apps/site/dist --project-name=edgeever-official",
-    "verify:acp-npm-upgrade": "bun scripts/verify-acp-npm-upgrade.mjs"
+    "verify:acp-npm-upgrade": "bun scripts/verify-acp-npm-upgrade.mjs",
+    "upstream:scan": "bun scripts/upstream-intake.mjs",
+    "upstream:import": "bun scripts/upstream-import.mjs"
   },
   "cloudflare": {
     "bindings": {
